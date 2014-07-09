@@ -16,4 +16,10 @@ package { "Microsoft Build Tools 2013":
   install_options => ['/S', '/NoWeb'],
 }
 
+package { "Git version 1.9.4-preview20140611":
+  ensure          => installed,
+  source          => 'C:\Downloads\Git-1.9.4-preview20140611.exe',
+  install_options => ['/VERYSILENT'],
+}
+
 create_resources(host, hiera_hash('hosts'))
