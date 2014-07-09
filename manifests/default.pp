@@ -1,8 +1,11 @@
 # TODO: split into some classes, configure with hiera
 
-# TODO: fold in cookie string, support downloads with overwriting
+$downloads_dir = 'C:\Downloads'
+
+# TODO: fold in cookie string, support using a mounted download location
 windows_java::jdk { "JDK 7":
   version => '7u60',
+  temp_target => $downloads_dir,
   cookie_string => 'oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com',
 }
 
