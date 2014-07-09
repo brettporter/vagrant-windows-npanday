@@ -10,4 +10,10 @@ windows_env { "JAVA_HOME=C:\\Program Files\\Java\\jdk1.${jdk_major}.0_${jdk_upda
   mergemode => 'clobber'
 }
 
+package { "Microsoft Build Tools 2013":
+  ensure          => installed,
+  source          => 'C:\Downloads\BuildTools_Full.exe',
+  install_options => ['/S', '/NoWeb'],
+}
+
 create_resources(host, hiera_hash('hosts'))
