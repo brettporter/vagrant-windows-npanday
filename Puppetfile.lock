@@ -2,7 +2,13 @@ FORGE
   remote: http://forge.puppetlabs.com
   specs:
     badgerious/windows_env (2.1.0)
+    joshcooper/powershell (0.0.6)
+    maestrodev/maven (1.2.1)
+      maestrodev/wget (>= 1.0.0)
+    maestrodev/wget (1.4.4)
 
 DEPENDENCIES
   badgerious/windows_env (>= 0)
+  joshcooper/powershell (>= 0)
+  maestrodev/maven (>= 0)
 

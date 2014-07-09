@@ -1,0 +1,4 @@
+#maven_mirrors:
+# - id: 'imac'
+#   url: 'http://10.0.2.2:8080/archiva/repository/all'
+#   mirrorof: 'external:*'
