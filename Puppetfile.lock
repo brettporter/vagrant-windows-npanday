@@ -5,10 +5,6 @@ FORGE
     cyberious/pget (0.1.5)
       joshcooper/powershell (>= 0.0.6)
       puppetlabs/stdlib (>= 3.2.0)
-    cyberious/windows_java (0.1.1)
-      badgerious/windows_env (>= 2.0.2)
-      cyberious/pget (>= 0.1.2)
-      ripienaar/module_data (>= 0.0.1)
     joshcooper/powershell (0.0.6)
     maestrodev/maven (1.2.1)
       maestrodev/wget (>= 1.0.0)
@@ -16,6 +12,16 @@ FORGE
     puppetlabs/stdlib (4.2.2)
     reidmv/unzip (0.1.1)
     ripienaar/module_data (0.0.3)
+
+GIT
+  remote: https://github.com/brettporter/puppet-windows_java.git
+  ref: all-fixes
+  sha: e4aecf3efd5055b488fc349226d6d3a208470c2f
+  specs:
+    cyberious/windows_java (0.1.1)
+      badgerious/windows_env (>= 2.0.2)
+      cyberious/pget (>= 0.1.2)
+      ripienaar/module_data (>= 0.0.1)
 
 DEPENDENCIES
   badgerious/windows_env (>= 0)
