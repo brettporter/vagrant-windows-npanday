@@ -14,11 +14,12 @@ FORGE
       maestrodev/wget (>= 1.0.0)
     maestrodev/wget (1.4.4)
     puppetlabs/stdlib (4.2.2)
+    reidmv/unzip (0.1.1)
     ripienaar/module_data (0.0.3)
 
 DEPENDENCIES
   badgerious/windows_env (>= 0)
   cyberious/windows_java (>= 0)
-  joshcooper/powershell (>= 0)
   maestrodev/maven (>= 0)
+  reidmv/unzip (>= 0)
 

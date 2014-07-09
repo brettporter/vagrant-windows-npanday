@@ -28,21 +28,21 @@ package { "Git version ${git_version}":
 
 create_resources(host, hiera_hash('hosts'))
 
+$apache_mirror = "http://archive.apache.org/dist"
 $mvn_version = "3.0.5"
 $maven_basedir = 'C:\Program Files\Apache Maven'
 $maven_installdir = "${maven_basedir}\\apache-maven-${mvn_version}"
 file { $maven_basedir:
   ensure => directory,
+}
+pget { 'Download Maven':
+  source => "${apache_mirror}/maven/binaries/apache-maven-${mvn_version}-bin.zip",
+  target => $downloads_dir,
 } ->
-exec { "unpack-maven":
-  command  => "
-\$shellApplication = New-Object -com shell.application
-\$zipFile =
-\$shellApplication.NameSpace('C:\\Downloads\\apache-maven-${mvn_version}-bin.zip')
-\$destFolder = \$shellApplication.NameSpace('${maven_basedir}')
-\$destFolder.CopyHere(\$zipFile.Items())",
-  provider => powershell,
-  creates  => $maven_installdir,
+unzip { "Unzip Maven":
+  source  => "${downloads_dir}/apache-maven-${mvn_version}-bin.zip",
+  creates => $maven_installdir,
+  require => File[$maven_basedir],
 } ->
 windows_env { "M2_HOME=${maven_installdir}":
   mergemode => 'clobber'
