@@ -15,9 +15,14 @@ package { "Microsoft Build Tools 2013":
   install_options => ['/S', '/NoWeb'],
 }
 
-package { "Git version 1.9.4-preview20140611":
+$git_version = '1.9.4-preview20140611'
+pget { 'Download Git':
+  source => "https://github.com/msysgit/msysgit/releases/download/Git-${git_version}/Git-${git_version}.exe",
+  target => $downloads_dir,
+}
+package { "Git version ${git_version}":
   ensure          => installed,
-  source          => 'C:\Downloads\Git-1.9.4-preview20140611.exe',
+  source          => "${downloads_dir}/Git-${git_version}.exe",
   install_options => ['/VERYSILENT'],
 }
 
