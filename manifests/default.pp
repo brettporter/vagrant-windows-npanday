@@ -1,15 +1,9 @@
-# TODO: split into some classes
+# TODO: split into some classes, configure with hiera
 
-$jdk_major = '7'
-$jdk_update = '60'
-
-package { "Java SE Development Kit ${jdk_major} Update ${jdk_update} (64-bit)":
-  ensure          => installed,
-  source          => "c:\\Downloads\\jdk-${jdk_major}u${jdk_update}-windows-x64.exe",
-  install_options => ['/s', 'WEB_JAVA=0'],
-} ->
-windows_env { "JAVA_HOME=C:\\Program Files\\Java\\jdk1.${jdk_major}.0_${jdk_update}":
-  mergemode => 'clobber'
+# TODO: fold in cookie string, support downloads with overwriting
+windows_java::jdk { "JDK 7":
+  version => '7u60',
+  cookie_string => 'oraclelicense=accept-securebackup-cookie;gpw_e24=http://edelivery.oracle.com',
 }
 
 package { "Microsoft Build Tools 2013":
@@ -48,7 +42,6 @@ windows_env { "M2_HOME=${maven_installdir}":
 windows_env { "PATH=${maven_installdir}\\bin":
 }
 
-# TODO: move to class, then configure with hiera
 maven::settings { "user-maven-settings":
   home    => 'C:\Users\vagrant',
   user    => 'vagrant',

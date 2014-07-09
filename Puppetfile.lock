@@ -1,14 +1,24 @@
 FORGE
-  remote: http://forge.puppetlabs.com
+  remote: https://forgeapi.puppetlabs.com
   specs:
     badgerious/windows_env (2.1.0)
+    cyberious/pget (0.1.5)
+      joshcooper/powershell (>= 0.0.6)
+      puppetlabs/stdlib (>= 3.2.0)
+    cyberious/windows_java (0.1.1)
+      badgerious/windows_env (>= 2.0.2)
+      cyberious/pget (>= 0.1.2)
+      ripienaar/module_data (>= 0.0.1)
     joshcooper/powershell (0.0.6)
     maestrodev/maven (1.2.1)
       maestrodev/wget (>= 1.0.0)
     maestrodev/wget (1.4.4)
+    puppetlabs/stdlib (4.2.2)
+    ripienaar/module_data (0.0.3)
 
 DEPENDENCIES
   badgerious/windows_env (>= 0)
+  cyberious/windows_java (>= 0)
   joshcooper/powershell (>= 0)
   maestrodev/maven (>= 0)
 
