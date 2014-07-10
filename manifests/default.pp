@@ -54,3 +54,26 @@ maven::settings { "user-maven-settings":
   user    => 'vagrant',
   mirrors => hiera('maven_mirrors', []),
 }
+
+pget { 'Download ImDisk':
+  source => "http://www.ltr-data.se/files/imdiskinst.exe",
+} ->
+# Can't use package to install, as it needs the environment variable
+exec { "install-imdisk":
+  command     => "${downloads_dir}\\imdiskinst.exe -y",
+  environment => 'IMDISK_SILENT_SETUP=1',
+  creates     => 'C:\Windows\system32\imdisk.exe',
+} ->
+pget { 'Download Windows SDK':
+  source => "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso",
+} ->
+exec { "mount-windows-sdk":
+  command => "imdisk -a -f ${downloads_dir}\\GRMSDKX_EN_DVD.iso -m J:",
+  creates => 'J:\setup.exe',
+  path    => 'C:\Windows\system32',
+} ->
+package { "Microsoft Windows SDK for Windows 7 (7.1)":
+  ensure          => installed,
+  source          => 'J:\setup.exe',
+  install_options => ['-q', '-params:ADDLOCAL=ALL'],
+}
