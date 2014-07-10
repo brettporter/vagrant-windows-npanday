@@ -1,6 +1,9 @@
 # TODO: split into some classes, configure with hiera
 
 $downloads_dir = 'C:\Downloads'
+Pget {
+  target => $downloads_dir,
+}
 
 windows_java::jdk { "JDK 7":
   version => '7u60',
@@ -16,7 +19,6 @@ package { "Microsoft Build Tools 2013":
 $git_version = '1.9.4-preview20140611'
 pget { 'Download Git':
   source => "https://github.com/msysgit/msysgit/releases/download/Git-${git_version}/Git-${git_version}.exe",
-  target => $downloads_dir,
 }
 package { "Git version ${git_version}":
   ensure          => installed,
@@ -35,7 +37,6 @@ file { $maven_basedir:
 }
 pget { 'Download Maven':
   source => "${apache_mirror}/maven/binaries/apache-maven-${mvn_version}-bin.zip",
-  target => $downloads_dir,
 } ->
 unzip { "Unzip Maven":
   source  => "${downloads_dir}/apache-maven-${mvn_version}-bin.zip",
