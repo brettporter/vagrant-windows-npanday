@@ -77,3 +77,15 @@ package { "Microsoft Windows SDK for Windows 7 (7.1)":
   source          => 'J:\setup.exe',
   install_options => ['-q', '-params:ADDLOCAL=ALL'],
 }
+
+$nunit_version = '2.6.3'
+pget { 'Download NUnit':
+  source => "http://launchpad.net/nunitv2/trunk/${nunit_version}/+download/NUnit-${nunit_version}.msi",
+} ->
+package { "NUnit ${nunit_version}":
+  ensure => installed,
+  source => "${downloads_dir}\\NUnit-${nunit_version}.msi",
+} ->
+windows_env { "PATH=C:\\Program Files (x86)\\NUnit ${nunit_version}\\bin":
+}
+
