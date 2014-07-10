@@ -55,26 +55,24 @@ maven::settings { "user-maven-settings":
   mirrors => hiera('maven_mirrors', []),
 }
 
-pget { 'Download ImDisk':
-  source => "http://www.ltr-data.se/files/imdiskinst.exe",
+pget { 'Download 7-Zip':
+  source => "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi",
 } ->
-# Can't use package to install, as it needs the environment variable
-exec { "install-imdisk":
-  command     => "${downloads_dir}\\imdiskinst.exe -y",
-  environment => 'IMDISK_SILENT_SETUP=1',
-  creates     => 'C:\Windows\system32\imdisk.exe',
-} ->
+package { '7-Zip 9.20 (x64 edition)':
+  ensure => installed,
+  source => "${downloads_dir}\\7z920-x64.msi",
+}
+
 pget { 'Download Windows SDK':
   source => "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso",
 } ->
-exec { "mount-windows-sdk":
-  command => "imdisk -a -f ${downloads_dir}\\GRMSDKX_EN_DVD.iso -m J:",
-  creates => 'J:\setup.exe',
-  path    => 'C:\Windows\system32',
+exec { "extract-windows-sdk":
+  command => "\"C:\\Program Files\\7-Zip\\7z.exe\" x ${downloads_dir}\\GRMSDKX_EN_DVD.iso -oC:\\tmp\\windows-sdk",
+  creates => 'C:\tmp\windows-sdk',
 } ->
 package { "Microsoft Windows SDK for Windows 7 (7.1)":
   ensure          => installed,
-  source          => 'J:\setup.exe',
+  source          => 'C:\tmp\windows-sdk\setup.exe',
   install_options => ['-q', '-params:ADDLOCAL=ALL'],
 }
 
@@ -88,4 +86,3 @@ package { "NUnit ${nunit_version}":
 } ->
 windows_env { "PATH=C:\\Program Files (x86)\\NUnit ${nunit_version}\\bin":
 }
-
