@@ -104,3 +104,11 @@ package { "NUnit ${nunit_version}":
 } ->
 windows_env { "PATH=C:\\Program Files (x86)\\NUnit ${nunit_version}\\bin":
 }
+
+pget { 'Download Silverlight 3 SDK':
+  source => "http://download.microsoft.com/download/F/5/1/F516C774-3BD1-40E0-BB51-2CDC9FD8D63A/silverlight_sdk.exe",
+} ->
+package { "Microsoft Silverlight 3 SDK":
+  ensure => installed,
+  source => "${downloads_dir}\\silverlight_sdk.exe",
+}
