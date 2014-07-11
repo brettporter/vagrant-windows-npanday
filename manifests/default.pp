@@ -10,11 +10,13 @@ windows_java::jdk { "JDK 7":
   temp_target => $downloads_dir,
 }
 
-package { "Microsoft Build Tools 2013":
-  ensure          => installed,
-  source          => 'C:\Downloads\BuildTools_Full.exe',
-  install_options => ['/S', '/NoWeb'],
-}
+#package { "Microsoft Build Tools 2013":
+#  ensure          => installed,
+#  source          => 'C:\Downloads\BuildTools_Full.exe',
+#  install_options => ['/S', '/NoWeb'],
+#}
+# TODO: double check if needed:
+#sdksetup.exe /q /features OptionId.NetFxSoftwareDevelopmentKit
 
 $git_version = '1.9.4-preview20140611'
 pget { 'Download Git':
