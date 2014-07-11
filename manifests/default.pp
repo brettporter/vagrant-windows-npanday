@@ -66,6 +66,13 @@ exec { "install-chocolatey":
 windows_env { 'PATH=C:\ProgramData\chocolatey\bin':
 }
 
+package { "wixtoolset":
+  ensure   => installed,
+  provider => chocolatey,
+} ->
+windows_env { 'PATH=C:\Program Files (x86)\WiX Toolset v3.8\bin':
+}
+
 pget { 'Download 7-Zip':
   source => "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi",
 } ->
