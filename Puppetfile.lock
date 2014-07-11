@@ -23,9 +23,18 @@ GIT
       cyberious/pget (>= 0.1.2)
       ripienaar/module_data (>= 0.0.1)
 
+GIT
+  remote: https://github.com/georgievrado/puppet-chocolatey.git
+  ref: fix_install_path
+  sha: 0bf14e8cb6352918bfebf5995a6b9d68f62200ae
+  specs:
+    rismoney/chocolatey (0.0.2)
+
 DEPENDENCIES
   badgerious/windows_env (>= 0)
   cyberious/windows_java (>= 0)
+  joshcooper/powershell (>= 0)
   maestrodev/maven (>= 0)
   reidmv/unzip (>= 0)
+  rismoney/chocolatey (>= 0)
 

@@ -57,6 +57,15 @@ maven::settings { "user-maven-settings":
   mirrors => hiera('maven_mirrors', []),
 }
 
+# Install Chocolatey
+exec { "install-chocolatey":
+  command  => "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))",
+  provider => powershell,
+  creates  => 'C:\ProgramData\chocolatey',
+} ->
+windows_env { 'PATH=C:\ProgramData\chocolatey\bin':
+}
+
 pget { 'Download 7-Zip':
   source => "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi",
 } ->
