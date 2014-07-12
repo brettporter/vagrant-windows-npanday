@@ -10,14 +10,6 @@ windows_java::jdk { "JDK 7":
   temp_target => $downloads_dir,
 }
 
-#package { "Microsoft Build Tools 2013":
-#  ensure          => installed,
-#  source          => 'C:\Downloads\BuildTools_Full.exe',
-#  install_options => ['/S', '/NoWeb'],
-#}
-# TODO: double check if needed:
-#sdksetup.exe /q /features OptionId.NetFxSoftwareDevelopmentKit
-
 $git_version = '1.9.4-preview20140611'
 pget { 'Download Git':
   source => "https://github.com/msysgit/msysgit/releases/download/Git-${git_version}/Git-${git_version}.exe",
@@ -81,17 +73,36 @@ package { '7-Zip 9.20 (x64 edition)':
   source => "${downloads_dir}\\7z920-x64.msi",
 }
 
-pget { 'Download Windows SDK':
-  source => "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso",
-} ->
-exec { "extract-windows-sdk":
-  command => "\"C:\\Program Files\\7-Zip\\7z.exe\" x ${downloads_dir}\\GRMSDKX_EN_DVD.iso -oC:\\tmp\\windows-sdk",
-  creates => 'C:\tmp\windows-sdk',
-} ->
-package { "Microsoft Windows SDK for Windows 7 (7.1)":
+#pget { 'Download Windows SDK':
+  # Windows 7.0 SDK (.NET 3.5 SP1)
+  #source => "http://download.microsoft.com/download/2/E/9/2E911956-F90F-4BFB-8231-E292A7B6F287/GRMSDKX_EN_DVD.iso",
+  # Windows 7.1 SDK (.NET 4.0)
+  #source => "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso",
+#} ->
+#exec { "extract-windows-sdk":
+  #command => "\"C:\\Program Files\\7-Zip\\7z.exe\" x ${downloads_dir}\\GRMSDKX_EN_DVD.iso -oC:\\tmp\\windows-sdk",
+  #creates => 'C:\tmp\windows-sdk',
+#} ->
+#package { "Microsoft Windows SDK for Windows 7 (7.1)":
+  #ensure          => installed,
+  #source          => 'C:\tmp\windows-sdk\setup.exe',
+  #install_options => ['-q', '-params:ADDLOCAL=ALL'],
+#}
+
+package { "Microsoft Build Tools 2013":
   ensure          => installed,
-  source          => 'C:\tmp\windows-sdk\setup.exe',
-  install_options => ['-q', '-params:ADDLOCAL=ALL'],
+  source          => 'C:\Downloads\BuildTools_Full.exe',
+  install_options => ['/S', '/NoWeb'],
+}
+
+# Just install the .NET Framework SDK from latest
+pget { 'Download Windows 8.1 SDK installer':
+  source => "http://download.microsoft.com/download/B/0/C/B0C80BA3-8AD6-4958-810B-6882485230B5/standalonesdk/sdksetup.exe",
+} ->
+package { "Windows Software Development Kit for Windows 8.1":
+  ensure          => installed,
+  source          => "${downloads_dir}/sdksetup.exe",
+  install_options => ['/q', '/features', 'OptionId.NetFxSoftwareDevelopmentKit'],
 }
 
 $nunit_version = '2.6.3'
