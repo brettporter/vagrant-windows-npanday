@@ -65,13 +65,13 @@ package { "wixtoolset":
 windows_env { 'PATH=C:\Program Files (x86)\WiX Toolset v3.8\bin':
 }
 
-pget { 'Download 7-Zip':
-  source => "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi",
-} ->
-package { '7-Zip 9.20 (x64 edition)':
-  ensure => installed,
-  source => "${downloads_dir}\\7z920-x64.msi",
-}
+#pget { 'Download 7-Zip':
+  #source => "http://downloads.sourceforge.net/sevenzip/7z920-x64.msi",
+#} ->
+#package { '7-Zip 9.20 (x64 edition)':
+  #ensure => installed,
+  #source => "${downloads_dir}\\7z920-x64.msi",
+#}
 
 #pget { 'Download Windows SDK':
   # Windows 7.0 SDK (.NET 3.5 SP1)
