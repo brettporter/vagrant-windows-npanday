@@ -131,3 +131,11 @@ package { "Microsoft Silverlight 3 SDK":
   ensure => installed,
   source => "${downloads_dir}\\silverlight_sdk.exe",
 }
+
+pget { "Web Platform Installer":
+  source => "http://download.microsoft.com/download/7/0/4/704CEB4C-9F42-4962-A2B0-5C84B0682C7A/WebPlatformInstaller_amd64_en-US.msi",
+} ->
+package { "Microsoft Web Platform Installer 4.6":
+  ensure => installed,
+  source => "${downloads_dir}\\WebPlatformInstaller_amd64_en-US.msi",
+}
