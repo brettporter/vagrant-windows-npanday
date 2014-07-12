@@ -116,6 +116,14 @@ package { "NUnit ${nunit_version}":
 windows_env { "PATH=C:\\Program Files (x86)\\NUnit ${nunit_version}\\bin":
 }
 
+pget { 'Download Azure 1.6 SDK':
+  source => "http://download.microsoft.com/download/D/F/4/DF442AB0-FAAE-44FF-A04E-F41E72FE6B6F/WindowsAzureSDK-x64.msi",
+} ->
+package { "Windows Azure Authoring Tools - November 2011":
+  ensure => installed,
+  source => "${downloads_dir}\\WindowsAzureSDK-x64.msi",
+}
+
 pget { 'Download Silverlight 3 SDK':
   source => "http://download.microsoft.com/download/F/5/1/F516C774-3BD1-40E0-BB51-2CDC9FD8D63A/silverlight_sdk.exe",
 } ->
