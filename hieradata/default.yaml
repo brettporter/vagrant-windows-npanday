@@ -1,5 +1,9 @@
-#maven_mirrors:
-# - id: 'imac'
+#windows::maven::maven_mirrors:
+# - id: 'host'
 #   url: 'http://10.0.2.2:8080/archiva/repository/all'
 #   mirrorof: 'external:*'
+
+#windows::chocoloate_webpi::offline_cache: 'C:\Downloads\webpicache'
+
+windows::maven::user: 'vagrant'
 

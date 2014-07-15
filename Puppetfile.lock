@@ -14,6 +14,13 @@ FORGE
     ripienaar/module_data (0.0.3)
 
 GIT
+  remote: https://github.com/brettporter/puppet-chocolatey.git
+  ref: all-fixes
+  sha: 51d53c82700e7e70b8df392d8e9816704afaeb19
+  specs:
+    rismoney/chocolatey (0.0.2)
+
+GIT
   remote: https://github.com/brettporter/puppet-windows_java.git
   ref: all-fixes
   sha: e4aecf3efd5055b488fc349226d6d3a208470c2f
@@ -22,13 +29,6 @@ GIT
       badgerious/windows_env (>= 2.0.2)
       cyberious/pget (>= 0.1.2)
       ripienaar/module_data (>= 0.0.1)
-
-GIT
-  remote: https://github.com/georgievrado/puppet-chocolatey.git
-  ref: fix_install_path
-  sha: 0bf14e8cb6352918bfebf5995a6b9d68f62200ae
-  specs:
-    rismoney/chocolatey (0.0.2)
 
 DEPENDENCIES
   badgerious/windows_env (>= 0)
