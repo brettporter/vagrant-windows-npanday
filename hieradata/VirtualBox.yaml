@@ -1,3 +1,5 @@
 #hosts:
 #  mycomputer:
 #    ip: '10.0.2.2'
+
+windows::maven::user: 'vagrant'
