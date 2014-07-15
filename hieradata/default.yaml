@@ -3,7 +3,7 @@
 #   url: 'http://10.0.2.2:8080/archiva/repository/all'
 #   mirrorof: 'external:*'
 
-#windows::chocoloate_webpi::offline_cache: 'C:\Downloads\webpicache'
+#windows::chocolatey_webpi::offlineCache: 'C:\Downloads\webpicache'
 
 # Required, to place settings in the correct place
 windows::maven::user: 'Administrator'
