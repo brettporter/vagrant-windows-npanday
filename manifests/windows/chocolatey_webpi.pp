@@ -1,5 +1,6 @@
 class windows::chocolatey_webpi(
   $offlineCache = undef,
+  $sqlPassword,
 ) {
 
   include windows::chocolatey

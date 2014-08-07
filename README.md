@@ -22,6 +22,6 @@ To populate this, you need to have mounted the directory on an existing
 Windows VM and run the Web Platform Installer in offline mode:
 
 ```
-"c:\Program Files\Microsoft\Web Platform Installer\WebpiCmd.exe" /Offline /Products:VS2010SI,MVC2,WDeploy_2_1,WindowsAzureSDK_1_7 /Path:C:\Downloads\WebPICache
+"c:\Program Files\Microsoft\Web Platform Installer\WebpiCmd.exe" /Offline /Products:VS2010SI,MVC2,MVC3,WDeploy_2_1,WindowsAzureSDK_1_7 /Path:C:\Downloads\WebPICache
 ```
 

@@ -8,3 +8,6 @@
 # Required, to place settings in the correct place
 windows::maven::user: 'Administrator'
 
+# Required, for packages that install SQLExpress
+windows::chocolatey_webpi::sqlPassword: 'abc123DEF!'
+

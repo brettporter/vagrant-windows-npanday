@@ -9,6 +9,7 @@ class windows::npanday::tests {
   }
 
   windows::chocolatey_webpi_package { "MVC2": }
+  windows::chocolatey_webpi_package { "MVC3": }
   windows::chocolatey_webpi_package { "WDeploy_2_1": }
 }
 
