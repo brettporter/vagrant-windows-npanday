@@ -6,7 +6,7 @@ define windows::chocolatey_webpi_package {
       ensure          => installed,
       provider        => chocolatey,
       source          => webpi,
-      install_options => ["-installerArguments","/Xml:${windows::chocolatey_webpi::offlineCache}\\feeds\\latest\\webproductlist.xml"],
+      install_options => ["-installArgs","/Xml:${windows::chocolatey_webpi::offlineCache}\\feeds\\latest\\webproductlist.xml"],
       require         => Windows::Downloadable_Package["Microsoft Web Platform Installer 4.6"],
     }
   }
