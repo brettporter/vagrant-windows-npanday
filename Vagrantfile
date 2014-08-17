@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Set the appropriate downloads folder to share
-  config.vm.synced_folder File.expand_path("~/Downloads"), '/Downloads'
+  config.vm.synced_folder File.expand_path("~/Downloads/windows"), '/Downloads'
 
   config.vm.provision "puppet" do |puppet|
     puppet.module_path = "modules"
