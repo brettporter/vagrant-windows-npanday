@@ -6,8 +6,6 @@ class windows::npanday::optional {
   package { "wixtoolset":
     ensure   => installed,
     provider => chocolatey,
-  } ->
-  windows_env { 'PATH=C:\Program Files (x86)\WiX Toolset v3.8\bin':
   }
 
 }
